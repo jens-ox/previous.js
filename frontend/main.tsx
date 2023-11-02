@@ -1,5 +1,5 @@
 import React from 'react'
 
 export function createApp() {
-  return <p>Hello world from React alakjsdljasdlkjsedljkfsjknd @fastify/vite!</p>
+  return <p>Hello alkjdlkjasfy/vite!</p>
 }

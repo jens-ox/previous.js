@@ -28,8 +28,7 @@
     "vitest": "^0.34.6"
   },
   "scripts": {
-    "start": "bun index.ts",
-    "dev": "bun --watch index.ts"
+    "dev": "bun index.ts"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
