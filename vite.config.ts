@@ -1,13 +1,16 @@
-import { resolve, dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
 import viteReact from '@vitejs/plugin-react'
+import type { UserConfig } from 'vite'
 
-const path = fileURLToPath(new URL(import.meta.url))
-const root = resolve(dirname(path), 'frontend')
+const root = './frontend'
 
 const plugins = [viteReact()]
 
 export default {
   root,
-  plugins
-}
+  plugins,
+  build: {
+    outDir: resolve(dirname(fileURLToPath(import.meta.url)), './dist/frontend/dist')
+  }
+} satisfies UserConfig

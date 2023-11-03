@@ -9,7 +9,7 @@ const main = async () => {
 
   await fastify.register(FastifyVite, {
     root: import.meta.url,
-    dev: true,
+    dev: process.env.NODE_ENV !== 'production',
     spa: true
   })
 
