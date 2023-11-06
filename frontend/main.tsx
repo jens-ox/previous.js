@@ -1,5 +1,6 @@
 import React from 'react'
+import './index.css'
 
 export function createApp() {
-  return <p>Hello lalala/vite!</p>
+  return <p className="font-sans text-xl">Hello lalala/vite!</p>
 }

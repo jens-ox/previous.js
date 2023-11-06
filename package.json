@@ -12,6 +12,7 @@
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
     "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.16",
     "bun-types": "latest",
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
@@ -23,6 +24,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
+    "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2",
@@ -33,7 +35,7 @@
     "dev": "bun index.ts",
     "build:frontend": "vite build",
     "build:backend": "swc index.ts vite.config.ts -d dist",
-    "build": "bun run build:frontend && bun run build:backend"
+    "build": "bun build:frontend && bun build:backend"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
