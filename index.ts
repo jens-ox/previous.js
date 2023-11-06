@@ -23,5 +23,5 @@ const main = async () => {
 
 if (process.argv[1] === fileURLToPath(new URL(import.meta.url))) {
   const server = await main()
-  await server.listen({ port: 3000 })
+  await server.listen({ port: parseInt(process.env.PORT || '3000', 10), host: process.env.ADDRESS || '0.0.0.0' })
 }

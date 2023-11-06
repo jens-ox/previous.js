@@ -11,6 +11,6 @@ export default {
   root,
   plugins,
   build: {
-    outDir: resolve(dirname(fileURLToPath(import.meta.url)), './dist/frontend/dist')
+    outDir: resolve(dirname(fileURLToPath(import.meta.url)), './dist/frontend')
   }
 } satisfies UserConfig
