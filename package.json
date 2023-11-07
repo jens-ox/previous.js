@@ -29,10 +29,10 @@
     "vitest": "^0.34.6"
   },
   "scripts": {
-    "dev": "tsx index.ts",
+    "dev": "bun index.ts",
     "build:frontend": "vite build",
     "build:backend": "swc index.ts vite.config.ts -d dist",
-    "build": "npm run build:frontend && npm run build:backend"
+    "build": "bun build:frontend && bun build:backend"
   },
   "dependencies": {
     "@fastify/vite": "^4.0.0",
