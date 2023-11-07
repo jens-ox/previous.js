@@ -3,7 +3,7 @@
 # This caused a docker build to be impossible.
 # Once this is fixed, we can reconsider bun.
 
-FROM node:lts-alpine as base
+FROM oven/bun:latest as base
 WORKDIR /usr/src/app
 
 # installation image -- both for build step and runtime step
@@ -12,11 +12,11 @@ FROM base AS install
 RUN mkdir -p /temp/dev
 RUN mkdir -p /temp/prod
 
-COPY package*.json /temp/dev/
-COPY package*.json /temp/prod/
+COPY package.json bun.lockb /temp/dev/
+COPY package.json bun.lockb /temp/prod/
 
-RUN cd /temp/dev && npm install --frozen-lockfile
-RUN cd /temp/prod && npm install --frozen-lockfile --omit=dev
+RUN cd /temp/dev && bun install --frozen-lockfile
+RUN cd /temp/prod && bun install --frozen-lockfile --production
 
 # build image
 FROM install AS prerelease
@@ -26,11 +26,11 @@ COPY . .
 ENV NODE_ENV=production
 RUN ls
 RUN ls frontend
-RUN npm run build:frontend
-RUN npm run build:backend
+RUN bun build:frontend
+RUN bun build:backend
 
 # runtime image
-FROM base as runtime
+FROM node:lts-alpine as runtime
 COPY --from=install /temp/prod/node_modules node_modules
 COPY --from=prerelease /usr/src/app/dist .
 COPY --from=prerelease /usr/src/app/package.json .
