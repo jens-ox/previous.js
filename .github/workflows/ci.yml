@@ -1,4 +1,6 @@
 name: ci
+on: push
+
 jobs:
   my-job:
     name: ci
