@@ -6,10 +6,8 @@ jobs:
     name: ci
     runs-on: ubuntu-latest
     steps:
-      # ...
       - uses: actions/checkout@v3
       - uses: oven-sh/setup-bun@v1
       - run: bun install
       - run: bun test
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+      - run: bun test:e2e:ci
