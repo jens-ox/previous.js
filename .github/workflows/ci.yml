@@ -14,7 +14,7 @@ jobs:
         run: |
           mkdir -p /home/runner/.cache/Cypress/13.4.0/Cypress
           cd /home/runner/.cache/Cypress/13.4.0/Cypress
-          wget -q -o Cypress.zip https://download.cypress.io/desktop/13.4.0?platform=linux&arch=x64
+          curl -s https://download.cypress.io/desktop/13.4.0?platform=linux&arch=x64 -o Cypress.zip
           unzip Cypress.zip
           rm Cypress.zip
       - run: bun test:e2e:ci
