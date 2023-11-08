@@ -19,6 +19,9 @@
       "bun-types",
       "vite/client",
       "./types.d.ts"
-    ]
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
 }
