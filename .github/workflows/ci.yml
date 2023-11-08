@@ -12,9 +12,9 @@ jobs:
       - run: bun test
       - name: Manually install Cypress binaries
         run: |
-          mkdir -p /home/runner/.cache/Cypress/13.4.0/Cypress
-          cd /home/runner/.cache/Cypress/13.4.0/Cypress
+          mkdir -p /home/runner/.cache/Cypress/13.4.0
+          cd /home/runner/.cache/Cypress/13.4.0
           curl -o "Cypress.zip" -sL "https://download.cypress.io/desktop/13.4.0?platform=linux&arch=x64"
-          unzip Cypress.zip
+          unzip -q Cypress.zip
           rm Cypress.zip
       - run: bun test:e2e:ci
