@@ -11,4 +11,5 @@ jobs:
       - uses: oven-sh/setup-bun@v1
       - run: bun install
       - run: bun test
-      - run: bun test:e2e:ci
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
