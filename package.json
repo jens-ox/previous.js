@@ -13,9 +13,11 @@
     "@typescript-eslint/parser": "^6.9.1",
     "autoprefixer": "^10.4.16",
     "bun-types": "^1.0.10",
+    "cypress": "^13.4.0",
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-n": "^16.2.0",
     "eslint-plugin-prettier": "^5.0.1",
@@ -35,6 +37,7 @@
   "scripts": {
     "dev": "bun index.ts",
     "test": "vitest",
+    "test:e2e": "cypress open",
     "build:frontend": "vite build --outDir dist/frontend",
     "build:backend": "swc index.ts vite.config.ts -d dist",
     "build": "bun build:frontend && bun build:backend"
