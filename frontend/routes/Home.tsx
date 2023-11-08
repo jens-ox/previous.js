@@ -1,23 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
-import { z } from 'zod'
-
-const DWDSchema = z.array(
-  z.object({
-    headLine: z.string(),
-    event: z.string(),
-    descriptionText: z.string()
-  })
-)
-
-type DWDType = z.infer<typeof DWDSchema>
+import type { DWDType } from '@/helpers/weather'
 
 export default function Home() {
   const { isPending, error, data } = useQuery<DWDType>({
     queryKey: ['wetter'],
     queryFn: async () => {
       const data = await fetch('/wetter').then((res) => res.json())
-      const warnings = DWDSchema.parse(data.warnings)
-      return warnings
+
+      return data
     }
   })
 

@@ -1,8 +1,9 @@
 import { fileURLToPath } from 'node:url'
 import Fastify from 'fastify'
 import FastifyVite from '@fastify/vite'
+import { DWDSchema } from './helpers/weather'
 
-const main = async () => {
+export const createApp = async () => {
   const fastify = Fastify({
     logger: true
   })
@@ -17,7 +18,8 @@ const main = async () => {
     const data = await (
       await fetch('https://s3.eu-central-1.amazonaws.com/app-prod-static.warnwetter.de/v16/gemeinde_warnings_v2.json')
     ).json()
-    return data
+    const warnings = DWDSchema.parse(data.warnings)
+    return warnings
   })
 
   fastify.get('/*', (_, res) => {
@@ -29,6 +31,6 @@ const main = async () => {
 }
 
 if (process.argv[1] === fileURLToPath(new URL(import.meta.url))) {
-  const server = await main()
-  await server.listen({ port: parseInt(process.env.PORT || '3000', 10), host: process.env.ADDRESS || '0.0.0.0' })
+  const app = await createApp()
+  await app.listen({ port: parseInt(process.env.PORT || '3000', 10), host: process.env.ADDRESS || '0.0.0.0' })
 }
