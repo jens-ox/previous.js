@@ -11,7 +11,7 @@ const NavButton = ({ children, ...props }: NavLinkProps) => (
 export default function RootRoute() {
   return (
     <main className="flex flex-col gap-6">
-      <nav className="border-b border-gray-200 bg-gray-100 p-2">
+      <nav className="border-b border-gray-200 bg-gray-100 p-4">
         <div className="container mx-auto flex gap-6">
           <NavButton to="/">Home</NavButton>
           <NavButton to="/about">About</NavButton>

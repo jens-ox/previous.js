@@ -27,8 +27,8 @@ export default function Home() {
     <div className="mx-auto flex max-w-xl flex-col gap-4">
       {data.map((w, i) => (
         <div key={`event-${i}`} className="rounded-lg bg-white p-2 shadow">
-          <span className="inline-block rounded-full border border-orange-400 bg-orange-100 px-2 text-xs font-medium">
-            {w.event}
+          <span className="inline-block rounded-full bg-orange-100 px-2 text-xs font-medium text-orange-800">
+            {w.event.toLowerCase()}
           </span>
           <h3 className="py-1 font-bold">{w.headLine}</h3>
           <p className="text-gray-700">{w.descriptionText}</p>
