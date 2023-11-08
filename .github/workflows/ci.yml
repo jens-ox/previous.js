@@ -10,7 +10,9 @@ jobs:
       - uses: oven-sh/setup-bun@v1
       - run: bun install
       - run: bun test
-      - run: |
+      - name: Manually install Cypress binaries
+        run: |
+          mkdir -p /home/runner/.cache/Cypress/13.4.0/Cypress
           cd /home/runner/.cache/Cypress/13.4.0/Cypress
           wget https://download.cypress.io/desktop/13.4.0?platform=linux&arch=x64 -O Cypress.zip
           unzip Cypress.zip
