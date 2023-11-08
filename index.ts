@@ -13,8 +13,15 @@ const main = async () => {
     spa: true
   })
 
-  fastify.get('/', (req, reply) => {
-    reply.html()
+  fastify.get('/wetter', async () => {
+    const data = await (
+      await fetch('https://s3.eu-central-1.amazonaws.com/app-prod-static.warnwetter.de/v16/gemeinde_warnings_v2.json')
+    ).json()
+    return data
+  })
+
+  fastify.get('/*', (_, res) => {
+    res.html()
   })
 
   await fastify.vite.ready()
