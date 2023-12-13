@@ -14,6 +14,10 @@ previous.js uses [Bun](https://bun.sh/) as package manager and TS runner.
 - run integration tests with `bun test:e2e`
 - generate a production build with `bun build`
 
+## Environment Variables
+
+- `BASEPATH` - Set at runtime to sever the application under a basepath in your domain.
+
 ## Technical
 
 - [Typescript](https://www.typescriptlang.org/): language
