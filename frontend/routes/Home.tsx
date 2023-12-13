@@ -5,7 +5,7 @@ export default function Home() {
   const { isPending, error, data } = useQuery<DWDType>({
     queryKey: ['wetter'],
     queryFn: async () => {
-      const data = await fetch('/wetter').then((res) => res.json())
+      const data = await fetch(`${window.appConfig.basepath}/wetter`).then((res) => res.json())
 
       return data
     }

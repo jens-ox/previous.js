@@ -40,11 +40,12 @@
     "test": "vitest",
     "test:e2e": "cypress open",
     "test:e2e:ci": "start-server-and-test 'bun dev' 3000 'cypress run'",
-    "build:frontend": "vite build --outDir dist/frontend",
+    "build:frontend": "vite build",
     "build:backend": "swc index.ts vite.config.ts -d dist",
     "build": "bun build:frontend && bun build:backend"
   },
   "dependencies": {
+    "@fastify/static": "^6.12.0",
     "@fastify/vite": "^4.0.0",
     "@tanstack/react-query": "^5.7.2",
     "@vitejs/plugin-react": "^4.1.1",

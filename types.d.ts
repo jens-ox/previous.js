@@ -11,6 +11,19 @@ declare module 'fastify' {
       ready(): Promise<void>
     }
   }
+
+  interface FastifyViteConfig {
+    spa: boolean
+    createHtmlTemplateFunction(source: string): ({ [key in string]: string }) => string
+  }
+}
+
+declare global {
+  interface Window {
+    appConfig: {
+      basepath: string
+    }
+  }
 }
 
 export {}
