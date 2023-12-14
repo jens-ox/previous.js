@@ -7,22 +7,25 @@ import RootRoute from './routes/Root'
 import AboutRoute from './routes/About'
 
 const queryClient = new QueryClient()
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <RootRoute />,
-    children: [
-      {
-        index: true,
-        element: <Home />
-      },
-      {
-        path: 'about',
-        element: <AboutRoute />
-      }
-    ]
-  }
-])
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <RootRoute />,
+      children: [
+        {
+          index: true,
+          element: <Home />
+        },
+        {
+          path: 'about',
+          element: <AboutRoute />
+        }
+      ]
+    }
+  ],
+  { basename: window.appConfig.basepath }
+)
 
 export function createApp() {
   return (

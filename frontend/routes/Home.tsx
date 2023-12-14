@@ -1,15 +1,8 @@
-import { useQuery } from '@tanstack/react-query'
+import { useApiQuery } from '../hooks/useApiQuery'
 import type { DWDType } from '@/helpers/weather'
 
 export default function Home() {
-  const { isPending, error, data } = useQuery<DWDType>({
-    queryKey: ['wetter'],
-    queryFn: async () => {
-      const data = await fetch('/wetter').then((res) => res.json())
-
-      return data
-    }
-  })
+  const { isPending, error, data } = useApiQuery<DWDType>('/wetter', ['wetter'])
 
   if (isPending) return <p>Loading...</p>
   if (error) return <p>Error: {error.message}</p>
