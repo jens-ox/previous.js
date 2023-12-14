@@ -19,7 +19,7 @@ export const createApp = async () => {
     dev: process.env.NODE_ENV !== 'production',
     spa: true,
     createHtmlFunction(source: string, _scope: unknown, config: FastifyViteConfig) {
-      // For now, we only support spa mode.
+      // Only support spa mode.
       if (!config.spa) {
         throw new Error('Must have spa enabled')
       }
@@ -31,6 +31,10 @@ export const createApp = async () => {
       const indexHtmlTemplate = config.createHtmlTemplateFunction(modifiedSource)
 
       return function (this: FastifyReply) {
+        // Create the app config object to pass to the browser.
+        const appConfig: Window['appConfig'] = { basepath: basePath }
+        const stringifiedAppConfig = JSON.stringify(appConfig)
+
         this.type('text/html')
         this.send(
           indexHtmlTemplate({
@@ -38,7 +42,7 @@ export const createApp = async () => {
             // The index.html contains a placeholder for injecting an inline
             // script tag with the appConfig. This is used to pass the basepath
             // down to the browser.
-            inlineConfig: `<script type="text/javascript">window.appConfig = { basepath: '${basePath}' }</script>`
+            inlineConfig: `<script type="text/javascript">window.appConfig = ${stringifiedAppConfig}</script>`
           })
         )
         return this
